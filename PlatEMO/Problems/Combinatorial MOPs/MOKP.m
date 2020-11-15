@@ -29,6 +29,8 @@ classdef MOKP < PROBLEM
             if isempty(obj.Global.D)
                 obj.Global.D = 250;
             end
+            obj.Global.lower    = zeros(1,obj.Global.D);
+            obj.Global.upper    = ones(1,obj.Global.D);
             obj.Global.encoding = 'binary';
             % Randomly generate profits and weights
             file = sprintf('MOKP-M%d-D%d.mat',obj.Global.M,obj.Global.D);

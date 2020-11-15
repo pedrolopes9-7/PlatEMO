@@ -22,6 +22,8 @@ classdef ZDT5 < PROBLEM
             if isempty(obj.Global.D)
                 obj.Global.D = 80;
             end
+            obj.Global.lower    = zeros(1,obj.Global.D);
+            obj.Global.upper    = ones(1,obj.Global.D);
             obj.Global.D        = ceil(max(obj.Global.D-30,1)/5)*5 + 30;
             obj.Global.encoding = 'binary';
         end

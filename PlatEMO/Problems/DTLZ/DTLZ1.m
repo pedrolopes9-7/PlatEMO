@@ -3,8 +3,8 @@ classdef DTLZ1 < PROBLEM
 % Benchmark MOP proposed by Deb, Thiele, Laumanns, and Zitzler
 
 %------------------------------- Reference --------------------------------
-% K. Deb, L. Thiele, M. Laumanns, and E. Zitzler, Scalable test problems
-% for evolutionary multiobjective optimization, Evolutionary multiobjective
+                                                                                                                                                                                                                                                                                                                                                                                                % K. Deb, L. Thiele, M. Laumanns, and E. Zitzler, Scalable test problems
+                                                                                                                                                                                                                                                                                                                                                                                                % for evolutionary multiobjective optimization, Evolutionary multiobjective
 % Optimization. Theoretical Advances and Applications, 2005, 105-145.
 %------------------------------- Copyright --------------------------------
 % Copyright (c) 2018-2019 BIMK Group. You are free to use the PlatEMO for
