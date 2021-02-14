@@ -107,7 +107,7 @@ function ql = Insert(p,k,pl)
         q = Head(pl);
         for i = k : m
             if p(i) < q(i)
-                flag1 = 1;
+                flag1 = 1;memMOPSOCD
             else
                 if p(i) > q(i)
                     flag2 = 1;

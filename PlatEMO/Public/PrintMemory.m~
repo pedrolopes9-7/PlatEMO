@@ -1,0 +1,11 @@
+function [] = PrintMemory(Memory)
+    keys = Memory.keySet();
+    values = Memory.values();
+    it = Memory.entrySet().iterator();
+    while (it.hasNext())
+        pair = it.next();
+        if (pair.getValue()
+        pair.getKey() 
+        pair.getValue()
+    end
+end
