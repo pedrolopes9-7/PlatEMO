@@ -1,4 +1,4 @@
-function Offspring = Operator(Particle,Pbest,Gbest, collisionSize)
+function Offspring = Operator(Particle,Pbest,Gbest, maximumCollision)
 % Particle swarm optimization in MOPSO-CD
 
 %------------------------------- Copyright --------------------------------
@@ -23,7 +23,7 @@ function Offspring = Operator(Particle,Pbest,Gbest, collisionSize)
     r1 = repmat(rand(N,1),1,D);
     r2 = repmat(rand(N,1),1,D);
     
-    if (collisionSize > 5)
+    if (maximumCollision > 5)
         %C1, C2, and w auto-evaluation
     end
     

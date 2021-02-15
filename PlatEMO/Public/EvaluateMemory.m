@@ -1,8 +1,11 @@
-function [] = EvaluateMemory(Memory)
+function maximumCollision = EvaluateMemory(Memory)
+    maximumCollision = 0;
     it = Memory.entrySet().iterator();
     while (it.hasNext())
-        pair = it.next();
-        disp(pair.getKey());
-        disp(pair.getValue());
+        listSize = it.next().size
+        if (listSize(2) >= 15)
+            maximumCollision = listSize;
+            break
+        end
     end
 end
