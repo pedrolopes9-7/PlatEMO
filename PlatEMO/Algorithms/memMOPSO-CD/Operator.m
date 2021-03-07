@@ -1,4 +1,4 @@
-function Offspring = Operator(Particle,Pbest,Gbest, maximumCollision)
+function Offspring = Operator(Particle,Pbest,Gbest,Memory)
 % Particle swarm optimization in MOPSO-CD
 
 %------------------------------- Copyright --------------------------------
@@ -23,8 +23,15 @@ function Offspring = Operator(Particle,Pbest,Gbest, maximumCollision)
     r1 = repmat(rand(N,1),1,D);
     r2 = repmat(rand(N,1),1,D);
     
+    maximumCollision = EvaluateMemory(Memory);
+    
     if (maximumCollision > 5)
-        %C1, C2, and w auto-evaluation
+        %clean up whole memory
+        %C1, C2, and w adaptation
+        %can change any time that the memory fills up with the desired
+        %threshold. for example, the first time it surpassed the threshold
+        %we adapt with a method X. The second time, we adapt with method Y,
+        %the third time with Z and so on...
     end
     
     C1 = repmat(unifrnd(1.5,2.5,N,1),1,D);

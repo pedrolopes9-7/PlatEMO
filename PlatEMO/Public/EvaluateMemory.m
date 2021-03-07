@@ -1,11 +1,11 @@
-function maximumCollision = EvaluateMemory(Memory)
-    maximumCollision = 0;
-    it = Memory.entrySet().iterator();
-    while (it.hasNext())
-        listSize = it.next().size
-        if (listSize(2) >= 15)
-            maximumCollision = listSize;
-            break
+function maxSizeCollision = EvaluateMemory(map)
+    keySet = keys(map);
+    maxSizeCollision = 0;
+    
+    for i=1:length(keySet)
+        value = map(keySet{i});
+        if (length(value) >= 10)
+            maxSizeCollision = length(value);
         end
     end
 end

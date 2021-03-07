@@ -5,14 +5,15 @@ function memMOPSOCD(Global)
     Population     = Global.Initialization();
     Archive        = UpdateArchive(Population,Global.N);
     Pbest          = Population;
-    Memory         = LinkedHashMap(Population);
+    Memory = containers.Map();
+    UpdateMemory(Memory, Population);
     
     %% Optimization
     while Global.NotTermination(Archive)
         Gbest            = Archive(randi(ceil(length(Archive)*0.1),1,Global.N));
-        maximumCollision = EvaluateMemory(Memory);
-        Population       = Operator(Population,Pbest,Gbest,maximumCollision);
+        Population       = Operator(Population,Pbest,Gbest,Memory);
         Archive          = UpdateArchive([Archive,Population],Global.N);
-        Pbest            = UpdatePbest(Pbest,Population);   
+        Pbest            = UpdatePbest(Pbest,Population);
+        UpdateMemory(Memory, Population);
     end
 end
