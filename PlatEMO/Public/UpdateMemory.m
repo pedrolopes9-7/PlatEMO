@@ -1,6 +1,6 @@
 function map = UpdateMemory(map, Population)
     for i=1:length(Population)
-        key = int2str(double2hash32bit(Population(i).obj));
+        key = int2str(hashFunction(Population(i).obj));
         
         if (isKey(map, key))
             values = map(key);
