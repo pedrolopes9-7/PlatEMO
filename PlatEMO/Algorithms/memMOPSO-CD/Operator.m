@@ -1,4 +1,4 @@
-function Offspring = Operator(Particle,Pbest,Gbest,Memory)
+function [Offspring,counter,allC1, allC2, allW] = Operator(Particle,Pbest,Gbest,Memory,counter)
 % Particle swarm optimization in MOPSO-CD
 
 %------------------------------- Copyright --------------------------------
@@ -17,25 +17,29 @@ function Offspring = Operator(Particle,Pbest,Gbest,Memory)
     [N,D]       = size(ParticleDec);
     ParticleVel = Particle.adds(zeros(N,D));
     Global      = GLOBAL.GetObj();
+    allC1 = 0;
+    allC2 = 0;
+    allW = 0;
 
     %% Particle swarm optimization
-    W  = repmat(unifrnd(0.1,0.5,N,1),1,D);
     r1 = repmat(rand(N,1),1,D);
     r2 = repmat(rand(N,1),1,D);
-    
+
     maximumCollision = EvaluateMemory(Memory);
     
-    if (maximumCollision > 5)
-        %clean up whole memory
-        %C1, C2, and w adaptation
-        %can change any time that the memory fills up with the desired
-        %threshold. for example, the first time it surpassed the threshold
-        %we adapt with a method X. The second time, we adapt with method Y,
-        %the third time with Z and so on...
+    if (maximumCollision > 30)
+        remove(Memory, keys(Memory));
+        counter = counter + 1;
     end
     
-    C1 = repmat(unifrnd(1.5,2.5,N,1),1,D);
-    C2 = repmat(unifrnd(1.5,2.5,N,1),1,D);
+    C1 = repmat(1.0,1,D) + (0.05*counter);
+    C2 = repmat(3.5,1,D) - (0.05*counter);
+    W = repmat(0.4,1,D) + (0.05*counter);
+    
+    allC1 = C1(1);
+    allC2 = C2(1);
+    allW = W(1);
+        
     OffVel = W.*ParticleVel + C1.*r1.*(PbestDec-ParticleDec) + C2.*r2.*(GbestDec-ParticleDec);
     OffDec = ParticleDec + OffVel;
     
