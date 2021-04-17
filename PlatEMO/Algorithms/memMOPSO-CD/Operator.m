@@ -24,17 +24,21 @@ function [Offspring,counter,allC1, allC2, allW] = Operator(Particle,Pbest,Gbest,
     %% Particle swarm optimization
     r1 = repmat(rand(N,1),1,D);
     r2 = repmat(rand(N,1),1,D);
-
     maximumCollision = EvaluateMemory(Memory);
     
-    if (maximumCollision > 30)
+    if (maximumCollision > 300000)
         remove(Memory, keys(Memory));
         counter = counter + 1;
     end
     
-    C1 = repmat(1.0,1,D) + (0.05*counter);
-    C2 = repmat(3.5,1,D) - (0.05*counter);
-    W = repmat(0.4,1,D) + (0.05*counter);
+    C1 = repmat(1.5,1,D);
+    C2 = repmat(2.5,1,D);
+    W  = repmat(1.2,1,D);
+
+    
+    if (C1 + C2 > 5.5 | C2 < 1.0 | C1 > 3.0 | W > 1.2)
+        counter = counter - 2;
+    end
     
     allC1 = C1(1);
     allC2 = C2(1);
