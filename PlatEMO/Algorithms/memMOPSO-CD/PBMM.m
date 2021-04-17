@@ -25,16 +25,25 @@ function [Offspring,counter,allC1, allC2, allW] = Operator(Particle,Pbest,Gbest,
     r1 = repmat(rand(N,1),1,D);
     r2 = repmat(rand(N,1),1,D);
     maximumCollision = EvaluateMemory(Memory);
+    L = 15
     
-    if (maximumCollision > 300000)
+    if (maximumCollision > L)
         remove(Memory, keys(Memory));
         counter = counter + 1;
     end
     
     C1 = repmat(1.5,1,D);
     C2 = repmat(2.5,1,D);
-    W  = repmat(1.2,1,D);
+    W  = repmat(0.2,1,D);
+    
+    a1 = 0.05
+    a2 = 0.07
+    
+    k = unifrnd(a1,a2)
 
+    C1 = C1 + k * counter
+    C2 = C2 - k * counter
+    W = W + k * counter
     
     if (C1 + C2 > 5.5 | C2 < 1.0 | C1 > 3.0 | W > 1.2)
         counter = counter - 2;

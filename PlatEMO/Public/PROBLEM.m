@@ -25,6 +25,7 @@ classdef PROBLEM < handle
     methods
         %% Generate initial population
         function PopDec = Init(obj,N)
+          rng(obj.Global.run, 'twister');
             switch obj.Global.encoding
                 case 'binary'
                     PopDec = randi([0,1],N,obj.Global.D);
